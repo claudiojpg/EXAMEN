@@ -1,0 +1,43 @@
+{% extends "./base.html" %}
+
+{% block title %} ECN {% endblock %}
+
+{% block body %}
+{% load static %}
+
+<div class="linea-1 m-2"></div>
+      <div class="container">
+        <div class="contenedor-titulares">
+          <div class="row">
+            <div class="col-md-8">
+              <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <a href="">
+                    <img src="{% static '/img/1.png' %}"  class="d-block w-100 mt-2 col-6" alt="">
+                  </div>
+                </a>
+                <div class="carousel-item">
+                  <a href="">
+            <img src="{% static '/img/2.png' %}" class="d-block w-100 mt-2 col-6" alt="...">
+                </div>
+              </a>
+         
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h1 style="font-size: 100px; margin-bottom: -10px;">ECN CLIMA</h1>
+        <a class="weatherwidget-io" href="https://forecast7.com/es/n33d45n70d67/santiago/" data-label_1="SANTIAGO" data-label_2="Clima" data-theme="ORIGINAL" >SANTIAGO, CHILE</a>
+        <script>
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+        </script>
+        <hr>
+        
+        
+      </div>
+
+    </div>
+  </div>
+  <hr>
+{% endblock %}
