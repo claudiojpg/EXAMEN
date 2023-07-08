@@ -1,0 +1,123 @@
+{% load static %}
+<html lang="en">
+  <link rel="icon" href="{% static 'img/FA-removebg-preview.png' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b4b343ad21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/styleadmin.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    
+    <title>Fundacion Apoyo</title>
+</head>
+<body>
+    <div class="bg-image">
+        <div class="filter"></div>
+    </div>
+    <nav class="navbar navbar-expand-lg static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/FA-removebg-preview.png' %}" height="60">
+            </a>
+            <h4>ADMINISTRACION-FUNDAP</h4>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'medicamentos_fundap' %}">Medicamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home_fundap' %}">Salir</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="card-body">
+          <h5 class="card-title">Agregar Paciente</h5>
+          <form method="POST" action="{% url 'datos_fundap' %}">
+              {% csrf_token %}
+              <div class="mb-3">
+                  <label for="txtRut" class="form-label">RUT:</label>
+                  <input type="text" class="form-control" id="txtRut" name="txtRut" required>
+              </div>
+              <div class="mb-3">
+                  <label for="txtNombre" class="form-label">Nombre:</label>
+                  <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+              </div>
+              <div class="mb-3">
+                  <label for="txtApellidoPaterno" class="form-label">Apellido Paterno:</label>
+                  <input type="text" class="form-control" id="txtApellidoPaterno" name="txtApellidoPaterno" required>
+              </div>
+              <div class="mb-3">
+                  <label for="txtApellidoMaterno" class="form-label">Apellido Materno:</label>
+                  <input type="text" class="form-control" id="txtApellidoMaterno" name="txtApellidoMaterno" required>
+              </div>
+              <div class="mb-3">
+                  <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                  <input type="date" class="form-control" id="txtFechaNacimiento" name="txtFechaNacimiento" required>
+              </div>
+              <div class="mb-3">
+                  <label for="genero_id" class="form-label">Género:</label>
+                  <select class="form-select" id="genero_id" name="genero_id" required>
+                      {% for genero in generos %}
+                      <option value="{{ genero.id_genero }}">{{ genero.genero }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+              <div class="mb-3">
+                  <label for="txtTelefono" class="form-label">Teléfono:</label>
+                  <input type="text" class="form-control" id="txtTelefono" name="txtTelefono" required>
+              </div>
+              <div class="mb-3">
+                  <label for="txtInformacionSalud" class="form-label">Información de Salud:</label>
+                  <input type="text" class="form-control" id="txtInformacionSalud" name="txtInformacionSalud">
+              </div>
+              <div class="mb-3">
+                  <label for="activo" class="form-label">Activo:</label>
+                  <input type="number" class="form-control" id="activo" name="activo" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Agregar Paciente</button>
+          </form>
+      </div>
+  </div>
+  <div class="container mt-4">
+    <h1>Lista de pacientes</h1>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">RUT</th>
+          <th scope="col">Fecha de Nacimiento</th>
+          <th scope="col">Género</th>
+          <th scope="col">Información de Salud</th>
+          <th scope="col">Teléfono</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+          <td>{{ paciente.nombre }} {{ paciente.apellido_paterno }}</td>
+          <td>{{ paciente.rut }}</td>
+          <td>{{ paciente.fecha_nacimiento }}</td>
+          <td>{{ paciente.id_genero.genero }}</td>
+          <td>{{ paciente.Informacion_salud }}</td>
+          <td>{{ paciente.telefono }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+  </div>
+
+</body>
+</html>

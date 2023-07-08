@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+{% block title %} ECN {% endblock %}
+
+{% block body %}
+{% load static %}
+   <div class="container">
+    <div class="container_2 mt-2">
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <h1 style="text-align: left; font-size: 100px; ">{{ noticia.titulo }}</h1>
+          <p>Categoría: {{ noticia.categoria }}</p>
+          <hr style="margin-top: 10px;" >
+          <p>{{ noticia.fecha_creacion }}</p>
+          <h2></h2>
+          <p>{{ noticia.contenido }}</p>
+          <p>Autor: {{ noticia.autor }}</p>
+        </div>
+        
+        <br>
+        <br>
+
+        <div class="col-md-6 mt-5">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner mt-5">
+              <div class="carousel-item active">
+                <img src="{{ noticia.imagen.url }}" class="d-block mx-auto w-100" alt="...">
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+</body>
+</html>

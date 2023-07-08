@@ -1,0 +1,70 @@
+{% load static %}
+<html lang="en">
+  <link rel="icon" href="{% static 'img/FA-removebg-preview.png' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b4b343ad21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/styleadmin.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    
+    <title>Fundacion Apoyo</title>
+</head>
+<body>
+    <div class="bg-image">
+        <div class="filter"></div>
+    </div>
+    <nav class="navbar navbar-expand-lg static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/FA-removebg-preview.png' %}" height="60">
+            </a>
+            <h4>ADMINISTRACION-FUNDAP</h4>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'datos_fundap' %}">volver</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home_fundap' %}">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
+    <h1>Lista de medicamentos</h1>
+    <br>
+    <table class="table">
+     
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">ID</th>
+          <th scope="col">Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for medicamento in medicamentos %}
+        <tr>
+        
+          <td>{{ medicamento.nombre }}</td>
+          <td>{{ medicamento.id_medicamento }}</td>
+          <td>{{ medicamento.descripcion }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">No hay medicamentos disponibles.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

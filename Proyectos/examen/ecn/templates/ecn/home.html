@@ -1,9 +1,9 @@
 {% extends "./base.html" %}
-
+{% load static %}
 {% block title %} ECN {% endblock %}
 
 {% block body %}
-{% load static %}
+
 
 <div class="linea-1 m-2"></div>
       <div class="container">
@@ -22,16 +22,22 @@
             <img src="{% static '/img/2.png' %}" class="d-block w-100 mt-2 col-6" alt="...">
                 </div>
               </a>
+              <div class="carousel-item">
+                
+          <img src="{% static '/img/3.png' %}" class="d-block w-100 mt-2 col-6" alt="...">
+              </div>
          
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <h1 style="font-size: 100px; margin-bottom: -10px;">ECN CLIMA</h1>
+      <div class="col-md-4 ecn-clima-container " style= "margin-left: -40px">
+        <h1 style="font-size: 100px; margin-bottom: 10px;">ECN CLIMA</h1>
         <a class="weatherwidget-io" href="https://forecast7.com/es/n33d45n70d67/santiago/" data-label_1="SANTIAGO" data-label_2="Clima" data-theme="ORIGINAL" >SANTIAGO, CHILE</a>
         <script>
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
         </script>
+
+       
         <hr>
         
         
@@ -39,5 +45,65 @@
 
     </div>
   </div>
+
   <hr>
+
+  <div class="container_2 mt-2">
+    <div class="row mb-5">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static '/img/luis3.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Espectaculos</h5>
+            <p class="card-text"></p>
+            <a href="{% url 'espectaculos' %}" class="btn btn-sm btn-primary">Titulares Espectaculos</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static '/img/submarino 3.webp' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">¿Se hundió como el Titanic?</h5>
+            <p class="card-text"></p>
+            <a href="{% url 'internacional' %}" class="btn btn-sm btn-primary">Titulares internacional</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static '/img/COLO.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">COLO COLO se despide de la libertadores</h5>
+            <p class="card-text"></p>
+            <a href="{% url 'deportes' %}" class="btn btn-sm btn-primary">Titulares deportes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contenedor-titular m-2">
+    <hr>
+    <div class="row">
+      <h1 style="font-size: 100px; text-align: left;">GAMING</h1>
+      <div class="col-md-8">
+        <iframe width=100% height=80% src="https://www.youtube.com/embed/kHuRNVulo5E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="margin-top: 20px;;"></iframe>
+  </div>
+  <div class="col-md-4">
+    
+    <div class="card">
+      <img src="{% static '/img/chat.jpeg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">8 ayudas en chatgpt</h5>
+        <p class="card-text"></p>
+        <a href="{% url 'tecnologia' %}" class="btn btn-sm btn-primary">Titulares tecnologia</a>
+      </div>
+    </div>
+  
+  </div>
+  
+  </div>
+  </div>
+  </div>
+</div>
 {% endblock %}

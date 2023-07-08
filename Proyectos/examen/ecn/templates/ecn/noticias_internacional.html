@@ -1,0 +1,24 @@
+{% extends "./base.html" %}
+{% block title %} ECN {% endblock %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <div class="container_2 mt-2">
+        <div class="row mb-5">
+            {% for noticia in noticias %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ noticia.titulo }}</h5>
+                        <p class="card-text">Autor: {{ noticia.autor }}</p>
+                        <p class="card-text">Fecha: {{ noticia.fecha_creacion }}</p>
+                        <a href="{% url 'vista_noticia' noticia.titulo %}" class="btn btn-primary">Ver Noticia</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

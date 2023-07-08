@@ -1,0 +1,49 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.navbar{
+    background-color: #7b2572!important;
+    padding: 10px;
+}
+.navbar h4{
+  color: aliceblue;
+}
+.nav-item a{
+  color: aliceblue!important; 
+}
+.nav-link:hover{
+  color: rgb(183, 9, 90)!important;;
+}   
+
+
+  
+h1 {
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px 4px #746a6a;
+  text-align: center;
+}
+header p
+{
+  color: rgb(255, 255, 255);
+  font-size: large;
+  font-weight: bolder;
+  text-shadow: 2px 1px 3px #000000;
+}
+.container h1{
+  
+      color: rgb(255, 255, 255);
+      font-size: large;
+      font-weight: bolder;
+      text-shadow: 2px 1px 3px #000000;
+    }
+   
+.container h3{
+  color: rgb(255, 255, 255);
+  font-size: large;
+  font-weight: bolder;
+  text-shadow: 2px 1px 3px #000000;
+  text-align: center;
+}

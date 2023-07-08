@@ -1,0 +1,35 @@
+<h2>Agregar Noticia</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar</button>
+</form>
+
+{% for noticia in noticias %}
+  <h3>{{ noticia.titulo }}</h3>
+  <p>{{ noticia.contenido }}</p>
+  <p>Autor: {{ noticia.autor }}</p>
+  <p>Categoría: {{ noticia.categoria }}</p>
+  
+  <h4>Editar Noticia</h4>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ editar_form.noticia.titulo.as_hidden }}
+    {{ editar_form.noticia.contenido.as_hidden }}
+    
+    <button type="submit">Guardar</button>
+  </form>
+
+  <h4>Eliminar Noticia</h4>
+  <p>¿Estás seguro de que quieres eliminar la noticia "{{ noticia.titulo }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ eliminar_form.noticia.titulo.as_hidden }}
+
+    <button type="submit">Eliminar</button>
+  </form>
+
+  <hr>
+{% empty %}
+  <p>No hay noticias disponibles.</p>
+{% endfor %}

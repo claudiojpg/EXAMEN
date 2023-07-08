@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<link rel="icon" href="{% static '/img/log.png ' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilos_editar.css' %}">
+    <title>Editar Noticia</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Noticia</h1>
+        <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirm('¿Desea guardar los cambios?')">
+            {% csrf_token %}
+            <label for="txtTitulo">Título:</label>
+            <input type="text" id="txtTitulo" name="txtTitulo" value="{{ noticia.titulo }}" required>
+            <br>
+            <label for="txtContenido">Contenido:</label>
+            <textarea id="txtContenido" name="txtContenido" required>{{ noticia.contenido }}</textarea>
+            <br>
+            <label for="autor_id">Autor:</label>
+            <select id="autor_id" name="autor_id" required>
+                {% for autor in autores %}
+                    <option value="{{ autor.id }}" {% if autor.id == noticia.autor.id %}selected{% endif %}>{{ autor.nombre }}</option>
+                {% endfor %}
+            </select>
+            <label for="categoria_id">Categoría:</label>
+            <select id="categoria_id" name="categoria_id" required>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}" {% if categoria.id == noticia.categoria.id %}selected{% endif %}>{{ categoria.nombre }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            {% if noticia.imagen %}
+                <div>
+                    <label>Imagen actual en la base de datos:</label>
+                    <img src="{{ noticia.imagen.url }}" alt="Imagen actual" width="350">
+                    <button type="submit" class="btn btn-dark" onclick="eliminarImagen()">Eliminar Imagen</button>
+                </div>
+            {% endif %}
+            <label for="imagen">Nueva Imagen:</label>
+            <input type="file" id="imagen" name="imagen">
+            <br>
+            <div class="btn-container">
+                <button type="submit" class="btn btn-dark">Guardar Cambios</button>
+                <button a href="{% url 'lista_noticias' %}"  type="submit" class="btn btn-dark">Volver</a></button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function eliminarImagen() {
+            document.getElementById("imagen").value = "";
+            document.querySelector("img").src = ""; 
+        }
+    </script>
+</body>
+</html>

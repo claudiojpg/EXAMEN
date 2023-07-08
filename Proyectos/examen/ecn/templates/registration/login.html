@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<link rel="icon" href="{% static '/img/log.png ' %}">
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'css/estilos_login.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <div class="form-container">
+        
+        <h1>Login</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            
+       
+            <button  id="boton" class="boton"type="submit">Enviar</button>
+        </form>
+
+        <div class="recordar">
+            
+            <a href="{% url 'home' %}">Volver</a>
+        </div>
+    </div>
+</body>
+
+</html>

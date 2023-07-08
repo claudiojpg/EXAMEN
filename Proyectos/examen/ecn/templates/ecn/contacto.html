@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="icon" href="{% static '/img/log.png ' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/estilos_contacto.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    
+</head>
+<body>
+    <form method="POST" action="{% url 'procesar_formulario' %}">
+        {% csrf_token %}
+        <div class="contenedor_contacto">
+            <div class="caja_contacto">
+                <div class="izquierda"></div> 
+                <div class="derecha">
+                    <h2>Contactanos</h2>
+                    <input type="text" id="nombre" name="nombre" class="field" placeholder="tu nombre" required><br>
+                    <input type="email" id="correo" name="correo" class="field" placeholder="Tu correo" required><br>
+                    <input type="text" id="telefono" name="telefono" class="field" placeholder="tu telefono" required><br>
+                    <textarea id="mensaje" name="mensaje" class="field area" placeholder="mensaje" required></textarea><br>
+                    <button type="submit" class="btn btn-outline-dark btn-lg mt-3">enviar</button>
+                    <a href="{% url 'home' %}" class="btn btn-outline-dark btn-lg mt-3">inicio</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="{% static 'js/mainecn.js' %}"></script>
+</body>
+</html>

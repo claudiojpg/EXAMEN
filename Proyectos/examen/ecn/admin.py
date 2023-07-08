@@ -1,9 +1,14 @@
 from django.contrib import admin
-from .models import  AreaCursos, Cursos
+from .models import  Autor,Categoria,Noticia
 # Register your models here.
 
-admin.site.register(AreaCursos)
-admin.site.register(Cursos)
+
+admin.site.register(Autor)
+admin.site.register(Categoria)
+admin.site.register(Noticia)
+
+
+
 
 
 

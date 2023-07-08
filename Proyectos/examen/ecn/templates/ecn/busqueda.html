@@ -1,0 +1,22 @@
+
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} ECN {% endblock %}
+
+{% block body %}
+
+<h1>Resultados de búsqueda</h1>
+<h1>Mostrando resultados para: <strong>{{ query }}</strong></h1>
+<div class="card-deck">
+    {% for result in resultados %}
+        <div class="card">
+            
+            <div class="card-body">
+                <h5 class="card-title">{{ result.titulo }}</h5>
+                <p class="card-text">Autor: {{ result.autor }}</p>
+                <p class="card-text">Categoría: {{ result.categoria }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
