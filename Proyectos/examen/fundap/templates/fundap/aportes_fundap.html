@@ -126,7 +126,8 @@
     
         </div>
 
-        <input type="submit" value="Hacer Aporte" class="submit-btn">
+        <input type="submit" value="Hacer Aporte" class="submit-btn" id="submit-btn">
+
 
     </form>
 
@@ -134,4 +135,19 @@
 
     
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+   
+    var submitButton = document.getElementById('submit-btn');
+  
+  
+    submitButton.addEventListener('click', function(event) {
+      
+      event.preventDefault();
+
+      
+      alert('Aporte realizado');
+    });
+  });
+</script>
 </html>
